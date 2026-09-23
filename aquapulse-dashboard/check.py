@@ -2,7 +2,7 @@
 """Static self-checks on the built index.html (no browser involved)."""
 import io, re, subprocess, os
 
-html = io.open('index.html', encoding='utf-8').read()
+html = io.open('../index.html', encoding='utf-8').read()
 
 # 1) extract inline scripts
 scripts = re.findall(r'<script>(.*?)</script>', html, re.S)

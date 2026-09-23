@@ -15,5 +15,5 @@ print('burst sample:', parsed['bursts'][0]['desc_en'], '|', parsed['bursts'][0][
 
 safe = data.replace('</script>', '<\\/script>')
 html = tpl.replace('/*__APP_DATA__*/', safe)
-io.open('index.html', 'w', encoding='utf-8').write(html)
+io.open('../index.html', 'w', encoding='utf-8').write(html)
 print('index.html bytes:', len(html.encode('utf-8')))

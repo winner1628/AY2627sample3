@@ -4,8 +4,10 @@ A single-page, trilingual (繁體中文 / 简体中文 / English) interactive da
 maintenance and risk management of Hong Kong's water supply network, covering **all 18 districts**
 of Hong Kong with real government / public data.
 
-Live demo: open `aquapulse-dashboard/index.html` in any modern browser (internet connection required
-to load the ECharts 5.6.0 CDN). No server or build step is needed for the demo.
+Live demo: the built `index.html` at the repository root is served by GitHub Pages —
+<https://winner1628.github.io/AY2627sample3/>. It can also be opened locally in any modern browser
+(internet connection required to load the ECharts 5.6.0 CDN). No server or build step is needed for
+the demo.
 
 ## Features
 
@@ -30,29 +32,29 @@ to load the ECharts 5.6.0 CDN). No server or build step is needed for the demo.
 ```
 aquapulse-hk-dashboard/
 ├── README.md
-├── aquapulse-dashboard/          # front end (single-file HTML)
-│   ├── index.html                # final deliverable — self-contained, open to run
-│   ├── index.template.html       # v3 page template (source of index.html)
-│   ├── build.py                  # injects app_data.json into the template -> index.html
-│   └── check.py                  # static checks (JS syntax, CDN SRI, no local paths, trilingual)
-└── data_pipeline/                # data acquisition + processing
-    ├── app_data.json             # pre-built dataset consumed by build.py (~17 MB)
-    ├── pipeline3.py              # rebuild app_data.json from raw sources (entry point)
-    ├── fetch_hk_boundaries.py    # OSM: 18-district boundaries / coastline / water / rivers
-    ├── fetch_buildings15.py      # OSM: building footprints (15 districts; 3 districts reuse v2 files)
-    └── extract_roads_hk.py       # TD CENTERLINE.kml -> roads_hk.json (streaming parse)
+├── index.html                  # final deliverable (built) — served by GitHub Pages, open to run
+├── aquapulse-dashboard/        # front-end source
+│   ├── index.template.html     # v3 page template (source of index.html)
+│   ├── build.py                # injects app_data.json into the template -> ../index.html
+│   └── check.py                # static checks (JS syntax, CDN SRI, no local paths, trilingual)
+└── data_pipeline/              # data acquisition + processing
+    ├── app_data.json           # pre-built dataset consumed by build.py (~17 MB)
+    ├── pipeline3.py            # rebuild app_data.json from raw sources (entry point)
+    ├── fetch_hk_boundaries.py  # OSM: 18-district boundaries / coastline / water / rivers
+    ├── fetch_buildings15.py    # OSM: building footprints (15 districts; 3 districts reuse v2 files)
+    └── extract_roads_hk.py     # TD CENTERLINE.kml -> roads_hk.json (streaming parse)
 ```
 
 ## How to run
 
 **Option A — just the demo (recommended)**
-Double-click `aquapulse-dashboard/index.html`. The page is fully self-contained; only the ECharts
-library is loaded from jsDelivr CDN.
+Open the online site <https://winner1628.github.io/AY2627sample3/>, or double-click `index.html`
+in the repo root. The page is fully self-contained; only the ECharts library is loaded from
+jsDelivr CDN.
 
 **Option B — local server (optional)**
 ```
-cd aquapulse-dashboard
-python -m http.server 8123
+python -m http.server 8123        # from the repo root
 # open http://127.0.0.1:8123/index.html
 ```
 
@@ -64,7 +66,7 @@ python fetch_hk_boundaries.py     # Overpass API (retries built in)
 python fetch_buildings15.py       # Overpass API
 python pipeline3.py               # ~3 min -> app_data.json
 cd ..\aquapulse-dashboard
-python build.py                   # -> index.html
+python build.py                   # -> ../index.html
 python check.py
 ```
 
