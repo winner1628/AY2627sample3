@@ -1,0 +1,24 @@
+# --- raw data (too large for GitHub; regenerate or download from sources) ---
+CENTERLINE.kml
+CENTERLINE.kmz
+*.geojson
+buildings_*_raw.json
+base_*_raw.json
+
+# --- python ---
+__pycache__/
+*.pyc
+
+# --- verification / scratch artifacts ---
+dom_out.txt
+edge_log.txt
+edge_shot.log
+shot_all.png
+_edge_tmp/
+_*.png
+t2.pdf
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
